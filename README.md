@@ -31,65 +31,65 @@ A collection of ready-to-implement plugins for fivem roleplay server
 	 - [esx_menu_list](https://github.com/ESX-Org/esx_menu_list)
 	
 	
-- [] mysql-async
-- [] essentialmode
-- [] esplugin_mysql
-- [] es_admin2
-- [] es_extended
-- [] esx_menu_default
-- [] esx_menu_list
-- [] esx_menu_dialog
-- [] esx_phone
-- [] esx_addonaccount
-- [] esx_society
-- [] skinchanger
-- [] esx_skin
-- [] esx_barbershop
-- [] esx_ambulancejob
-- [] esx_billing
-- [] esx_datastore
-- [] esx_addoninventory
-- [] esx_policejob
-- [] esx_identity
-- [] esx_holdup
-- [] esx_rpchat
-- [] esx_status
-- [] esx_basicneeds
-- [] esx_optionalneeds
-- [] esx_license
-- [] esx_dmvschool
-- [] esx_jobs
-- [] esx_joblisting
-- [] esx_taxijob
-- [] esx_mecanojob
-- [] esx_celldoors
-- [] esx_truckerjob
-- [] esx_atm
-- [] esx_vehicleshop
-- [] esx_shops
-- [] esx_clotheshop
-- [] esx_lscustom
-- [] esx_accessories
-- [] instance
-- [] esx_property
-- [] esx_service
-- [] esx_weashops
-- [] esx_drugs
-- [] esx_animations
-- [] esx_slotmachine
-- [] esx_petrol
-- [] pNotify
-- [] carhud
-- [] streetLabel
-- [] locksystem
-- [] TowScript
-- [] esx_tattoosShops
-- [] handsup
-- [] esx_eden_garage
-- [] lux_vehcontrol
-- [] ELS-FiveM
-- [] esx_voice
-- [] esx_aiomenu
+- [ ] mysql-async
+- [ ] essentialmode
+- [ ] esplugin_mysql
+- [ ] es_admin2
+- [ ] es_extended
+- [ ] esx_menu_default
+- [ ] esx_menu_list
+- [ ] esx_menu_dialog
+- [ ] esx_phone
+- [ ] esx_addonaccount
+- [ ] esx_society
+- [ ] skinchanger
+- [ ] esx_skin
+- [ ] esx_barbershop
+- [ ] esx_ambulancejob
+- [ ] esx_billing
+- [ ] esx_datastore
+- [ ] esx_addoninventory
+- [ ] esx_policejob
+- [ ] esx_identity
+- [ ] esx_holdup
+- [ ] esx_rpchat
+- [ ] esx_status
+- [ ] esx_basicneeds
+- [ ] esx_optionalneeds
+- [ ] esx_license
+- [ ] esx_dmvschool
+- [ ] esx_jobs
+- [ ] esx_joblisting
+- [ ] esx_taxijob
+- [ ] esx_mecanojob
+- [ ] esx_celldoors
+- [ ] esx_truckerjob
+- [ ] esx_atm
+- [ ] esx_vehicleshop
+- [ ] esx_shops
+- [ ] esx_clotheshop
+- [ ] esx_lscustom
+- [ ] esx_accessories
+- [ ] instance
+- [ ] esx_property
+- [ ] esx_service
+- [ ] esx_weashops
+- [ ] esx_drugs
+- [ ] esx_animations
+- [ ] esx_slotmachine
+- [ ] esx_petrol
+- [ ] pNotify
+- [ ] carhud
+- [ ] streetLabel
+- [ ] locksystem
+- [ ] TowScript
+- [ ] esx_tattoosShops
+- [ ] handsup
+- [ ] esx_eden_garage
+- [ ] lux_vehcontrol
+- [ ] ELS-FiveM
+- [ ] esx_voice
+- [ ] esx_aiomenu
 
 
 # Fivem_RP_ESX
