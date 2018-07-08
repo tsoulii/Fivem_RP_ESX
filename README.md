@@ -31,16 +31,16 @@ A collection of ready-to-implement plugins for fivem roleplay server
 	 - [esx_menu_list](https://github.com/ESX-Org/esx_menu_list)
 	
 	
-- [ ] mysql-async
-- [ ] essentialmode
-- [ ] esplugin_mysql
-- [ ] es_admin2
-- [ ] es_extended
-- [ ] esx_menu_default
-- [ ] esx_menu_list
-- [ ] esx_menu_dialog
+- [x] mysql-async
+- [x] essentialmode
+- [x] esplugin_mysql
+- [x] es_admin2
+- [x] es_extended
+- [x] esx_menu_default
+- [x] esx_menu_list
+- [x] esx_menu_dialog
 - [ ] esx_phone
-- [ ] esx_addonaccount
+- [x] esx_addonaccount
 - [ ] esx_society
 - [ ] skinchanger
 - [ ] esx_skin
