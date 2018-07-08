@@ -1,11 +1,11 @@
 # Fivem_RP_ESX
 
-###The project is still under construction.
+### The project is still under construction.
 
 If you want to join, write me a private message or let me know the [discord](https://discord.gg/TRWXRDw)
 
 A collection of ready-to-implement plugins for fivem roleplay server
-#These repositories do not contain artifacts server because they are different depending on the operating system
+# These repositories do not contain artifacts server because they are different depending on the operating system
 
 # Links & Read more
 - [ESX Documentation](https://esx-org.github.io/) (incomplete)
@@ -29,6 +29,8 @@ A collection of ready-to-implement plugins for fivem roleplay server
 	 - [esx_menu_default](https://github.com/ESX-Org/esx_menu_default)
 	 - [esx_menu_dialog](https://github.com/ESX-Org/esx_menu_dialog)
 	 - [esx_menu_list](https://github.com/ESX-Org/esx_menu_list)
+	
+	
 - [] mysql-async
 - [] essentialmode
 - [] esplugin_mysql
@@ -88,11 +90,6 @@ A collection of ready-to-implement plugins for fivem roleplay server
 - [] ELS-FiveM
 - [] esx_voice
 - [] esx_aiomenu
-	 
-	 
-
-
-
 
 
 # Fivem_RP_ESX
