@@ -277,14 +277,14 @@ AddEventHandler('es:playerLoaded', function(source, _player)
 
 end)
 
-AddEventHandler('playerDropped', function()
+AddEventHandler('playerDropped', function(reason)
 
   local _source = source
   local xPlayer = ESX.GetPlayerFromId(_source)
 
   if xPlayer ~= nil then
 
-    TriggerEvent('esx:playerDropped', _source)
+    TriggerEvent('esx:playerDropped', _source, reason)
 
     ESX.SavePlayer(xPlayer, function()
       ESX.Players[_source]        = nil
@@ -309,7 +309,7 @@ end)
 
 
 RegisterServerEvent('esx:giveInventoryItem')
-AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCount,ammotogive)
+AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCount)
 
   local _source = source
 
@@ -324,17 +324,17 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
     if itemCount > 0 and sourceItem.count >= itemCount then
 
       if targetItem.limit ~= -1 and (targetItem.count + itemCount) > targetItem.limit then
-        TriggerClientEvent('esx:showNotification', target, _U('ex_inv_lim') .. targetXPlayer.name)
+        TriggerClientEvent('esx:showNotification', _source, _U('ex_inv_lim', targetXPlayer.name))
       else
         sourceXPlayer.removeInventoryItem(itemName, itemCount)
         targetXPlayer.addInventoryItem   (itemName, itemCount)
-
-        TriggerClientEvent('esx:showNotification', _source, _U('yougave') .. ' ~g~x' .. itemCount .. ' ' .. ESX.Items[itemName].label .. _U('to')   .. targetXPlayer.name)
-        TriggerClientEvent('esx:showNotification', target,  _U('youreceived') .. ' ~g~x'  .. itemCount .. ' ' .. ESX.Items[itemName].label .. _U('by') .. sourceXPlayer.name)
+        
+        TriggerClientEvent('esx:showNotification', _source, _U('gave_item', itemCount, ESX.Items[itemName].label, targetXPlayer.name))
+        TriggerClientEvent('esx:showNotification', target,  _U('received_item', itemCount, ESX.Items[itemName].label, sourceXPlayer.name))
       end
 
     else
-      TriggerClientEvent('esx:showNotification', target, _U('imp_invalid_quantity'))
+      TriggerClientEvent('esx:showNotification', _source, _U('imp_invalid_quantity'))
     end
 
   elseif type == 'item_money' then
@@ -342,13 +342,13 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
     if itemCount > 0 and sourceXPlayer.player.get('money') >= itemCount then
 
       sourceXPlayer.removeMoney(itemCount)
-      targetXPlayer.addMoney(itemCount)
+      targetXPlayer.addMoney   (itemCount)
 
-      TriggerClientEvent('esx:showNotification', _source, _U('yougave') .. ' ~g~$' .. itemCount .. _U('to')   .. targetXPlayer.name)
-      TriggerClientEvent('esx:showNotification', target,  _U('youreceived') .. ' ~g~$'  .. itemCount .. _U('by') .. sourceXPlayer.name)
+      TriggerClientEvent('esx:showNotification', _source, _U('gave_money', itemCount, targetXPlayer.name))
+      TriggerClientEvent('esx:showNotification', target,  _U('received_money', itemCount, sourceXPlayer.name))
 
     else
-      TriggerClientEvent('esx:showNotification', target, _U('imp_invalid_amount'))
+      TriggerClientEvent('esx:showNotification', _source, _U('imp_invalid_amount'))
     end
 
   elseif type == 'item_account' then
@@ -356,13 +356,13 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
     if itemCount > 0 and sourceXPlayer.getAccount(itemName).money >= itemCount then
 
       sourceXPlayer.removeAccountMoney(itemName, itemCount)
-      targetXPlayer.addAccountMoney(itemName, itemCount)
+      targetXPlayer.addAccountMoney   (itemName, itemCount)
 
-      TriggerClientEvent('esx:showNotification', _source, _U('yougave') .. ' [' .. Config.AccountLabels[itemName] .. '] ~g~$' .. itemCount .. _U('to')   .. targetXPlayer.name)
-      TriggerClientEvent('esx:showNotification', target,  _U('youreceived') .. ' ['  .. Config.AccountLabels[itemName] .. '] ~g~$' .. itemCount .. _U('by') .. sourceXPlayer.name)
+      TriggerClientEvent('esx:showNotification', _source, _U('gave_account_money', itemCount, Config.AccountLabels[itemName], targetXPlayer.name))
+      TriggerClientEvent('esx:showNotification', target,  _U('received_account_money', itemCount, Config.AccountLabels[itemName], sourceXPlayer.name))
 
     else
-      TriggerClientEvent('esx:showNotification', target, _U('imp_invalid_amount'))
+      TriggerClientEvent('esx:showNotification', _source, _U('imp_invalid_amount'))
     end
 
   elseif type == 'item_weapon' then
@@ -370,17 +370,9 @@ AddEventHandler('esx:giveInventoryItem', function(target, type, itemName, itemCo
     sourceXPlayer.removeWeapon(itemName)
     targetXPlayer.addWeapon(itemName, itemCount)
     
-    local weaponLabel = itemName
-
-    for i=1, #Config.Weapons, 1 do
-      if Config.Weapons[i].name == itemName then
-        weaponLabel = Config.Weapons[i].label
-        break
-      end
-    end
-
-    TriggerClientEvent('esx:showNotification', _source, _U('yougave') .. ' x1 ~g~' .. weaponLabel .. _U('to')   .. targetXPlayer.name)
-    TriggerClientEvent('esx:showNotification', target,  _U('youreceived')  .. ' x1 ~g~' .. weaponLabel .. _U('by') .. sourceXPlayer.name)
+    local weaponLabel = ESX.GetWeaponLabel(itemName)
+    TriggerClientEvent('esx:showNotification', _source, _U('gave_weapon', weaponLabel, itemCount, targetXPlayer.name))
+    TriggerClientEvent('esx:showNotification', target,  _U('received_weapon', weaponLabel, itemCount, sourceXPlayer.name))
   end
 
 end)
@@ -505,28 +497,20 @@ AddEventHandler('esx:removeInventoryItem', function(type, itemName, itemCount)
   elseif type == 'item_weapon' then
 
     local xPlayer      = ESX.GetPlayerFromId(source)
-    local weaponLabel  = itemName
-    local weaponName   = nil
-    local weaponPickup = nil
-
-    for i=1, #Config.Weapons, 1 do
-      if Config.Weapons[i].name == itemName then
-        weaponLabel = Config.Weapons[i].label
-        weaponName = Config.Weapons[i].name
-        weaponPickup = 'PICKUP_'..weaponName
-        break
-      end
-    end
-
+    local weaponName   = itemName
+    local weaponLabel  = ESX.GetWeaponLabel(weaponName)
+    local weaponPickup = 'PICKUP_' .. weaponName
+    
+    TriggerClientEvent('esx:showNotification', _source, _U('delete_five_min'))
+    
     SetTimeout(Config.RemoveInventoryItemDelay, function()
 
       xPlayer.removeWeapon(itemName)
-
       if Config.EnableWeaponPickup then
-        TriggerClientEvent('esx:pickupWeapon', _source, weaponPickup, weaponName,itemCount)
+        TriggerClientEvent('esx:pickupWeapon', _source, weaponPickup, weaponName, itemCount)
       end
 
-      TriggerClientEvent('esx:showNotification', _source, _U('threw') .. ' x1 ~g~' .. weaponLabel .. _U('withammo').. '~r~' .. itemCount .. _U('ammogiven'))
+      TriggerClientEvent('esx:showNotification', _source, _U('threw_weapon', weaponLabel, itemCount))
 
     end)
 
@@ -558,7 +542,7 @@ AddEventHandler('esx:onPickup', function(id)
   if pickup.type == 'item_standard' then
 
     local item      = xPlayer.getInventoryItem(pickup.name)
-    local canTake   = (item.limit - item.count > 0) and (item.limit - item.count) or 0
+    local canTake   = ((item.limit == -1) and (pickup.count)) or ((item.limit - item.count > 0) and (item.limit - item.count)) or 0
     local total     = pickup.count < canTake and pickup.count or canTake
     local remaining = pickup.count - total
 
@@ -569,7 +553,7 @@ AddEventHandler('esx:onPickup', function(id)
     end
 
     if remaining > 0 then
-      TriggerClientEvent('esx:showNotification', _source, 'Vous n\'avez plus de place pour ~b~' .. item.label .. '~s~')
+      TriggerClientEvent('esx:showNotification', _source, _U('cannot_pickup_room', item.label))
       ESX.CreatePickup('item_standard', pickup.name, remaining, item.label .. ' [' .. remaining .. ']', _source)
     end
 

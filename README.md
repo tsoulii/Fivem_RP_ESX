@@ -1,11 +1,12 @@
 # Fivem_RP_ESX
 
-### :bangbang: The project is still under construction. :back: :soon:
+### The project is still under construction. :back: :soon:
 
 If you want to join, write me a private message or let me know the [discord](https://discord.gg/TRWXRDw)
 
 A collection of ready-to-implement plugins for fivem roleplay server
-# These repositories do not contain artifacts server because they are different depending on the operating system
+This repository is based on the [ESX-Org](https://github.com/ESX-Org) repositories
+### These repositories do not contain artifacts server because they are different depending on the operating system
 
 # Links & Read more
 - [ESX Documentation](https://esx-org.github.io/) (incomplete)
@@ -17,11 +18,12 @@ A collection of ready-to-implement plugins for fivem roleplay server
 2. Useful administrative tools
      - [icecon](https://github.com/icedream/icecon/releases)
      - icecon script designed for windows, requiring a simple configuration simplifying connecting to the console
+	 
 3. Basic scripts that allow the use of the ESX extension and database
      - [mysql-async](https://github.com/brouznouf/fivem-mysql-async/releases/latest)
      - [EssentialMode](https://essentialmode.com/) (es_admin2 included, a basic admin tool)
      - [esplugin_mysql](https://forum.fivem.net/t/release-essentialmode-base/3665/1181)
-     - [async](https://github.com/ESX-Org/async/releases/latest)
+     - [async](https://github.com/ESX-Org/async/releases/latest) 
 	 
 4. Additional roleplay scripts
      - [loadscreen by Syntasu](https://github.com/Syntasu/synn-loadscreen)
@@ -30,12 +32,11 @@ A collection of ready-to-implement plugins for fivem roleplay server
 	 - [esx_menu_dialog](https://github.com/ESX-Org/esx_menu_dialog)
 	 - [esx_menu_list](https://github.com/ESX-Org/esx_menu_list)
 	 
-- [ ] esx_skin
-- [ ] esx_phone
-- [x] esx_addonaccount
-- [ ] esx_society
-- [ ] skinchanger
-- [ ] esx_skin
+### To do: 
+- [x] esx_phone
+- [x] esx_society
+- [x] [skinchanger](https://github.com/ESX-Org/skinchanger)
+- [x] [esx_skin] (https://github.com/ESX-Org/esx_skin)
 - [ ] esx_barbershop
 - [ ] esx_ambulancejob
 - [ ] esx_billing
@@ -82,7 +83,3 @@ A collection of ready-to-implement plugins for fivem roleplay server
 - [ ] ELS-FiveM
 - [ ] esx_voice
 - [ ] esx_aiomenu
-
-# Fivem_RP_ESX
-es_extended
-https://github.com/ESX-Org/es_extended

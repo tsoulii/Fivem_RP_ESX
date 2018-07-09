@@ -1,12 +1,14 @@
 Config                          = {}
-Config.MaxPlayers               = 20
+Config.Locale                   = 'fr'
+
 Config.Accounts                 = { 'bank', 'black_money' }
-Config.AccountLabels            = { bank = 'Bank', black_money = 'PLN' } -- French
--- Config.AccountLabels            = { bank = 'Bank', black_money = 'Dirty Money' } -- English
-Config.PaycheckInterval         = 7 * 60000
+Config.AccountLabels            = { bank = _U('bank'), black_money = _U('black_money') }
+
+Config.EnableSocietyPayouts     = false -- pay from the society account that the plyayers are employeed at instead of plain giving money. Requirement: esx_society
 Config.ShowDotAbovePlayer       = false
 Config.DisableWantedLevel       = true
+Config.EnableWeaponPickup       = true
 Config.RemoveInventoryItemDelay = 5 * 60000
-Config.EnableWeaponPickup       = false
-Config.Locale                   = 'en'
-Config.EnableDebug              = true
+Config.PaycheckInterval         = 7 * 60000
+Config.MaxPlayers               = 32
+Config.EnableDebug              = false

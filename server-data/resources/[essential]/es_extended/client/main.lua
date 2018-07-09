@@ -10,13 +10,12 @@ local Keys = {
   ["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
-local GUI           = {}
-GUI.Time            = 0
 local LoadoutLoaded = false
 local IsPaused      = false
 local PlayerSpawned = false
 local LastLoadout   = {}
 local Pickups       = {}
+local isDead        = false
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
@@ -57,43 +56,50 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 end)
 
 AddEventHandler('playerSpawned', function()
+	while not ESX.PlayerLoaded do
+		Citizen.Wait(1)
+	end
 
-  Citizen.CreateThread(function()
+	local playerPed = GetPlayerPed(-1)
 
-    while not ESX.PlayerLoaded do
-      Citizen.Wait(0)
-    end
+	-- Restore position
+	if ESX.PlayerData.lastPosition ~= nil then
+		SetEntityCoords(playerPed,  ESX.PlayerData.lastPosition.x,  ESX.PlayerData.lastPosition.y,  ESX.PlayerData.lastPosition.z)
+	end
 
-    local playerPed = GetPlayerPed(-1)
+	TriggerEvent('esx:restoreLoadout') -- restore loadout
 
-    -- Restore position
-    if ESX.PlayerData.lastPosition ~= nil then
-      SetEntityCoords(playerPed,  ESX.PlayerData.lastPosition.x,  ESX.PlayerData.lastPosition.y,  ESX.PlayerData.lastPosition.z)
-    end
+	LoadoutLoaded = true
+	PlayerSpawned = true
+	isDead = false
+end)
 
-    -- Restore loadout
-    TriggerEvent('esx:restoreLoadout')
+AddEventHandler('baseevents:onPlayerDied', function(killerType, deathCoords)
+	TriggerEvent('esx:onPlayerDeath')
+end)
 
-    LoadoutLoaded = true
-    PlayerSpawned = true
+-- handle death client side (could have been server side...)
+AddEventHandler('baseevents:onPlayerKilled', function(killerPed, data)
+	TriggerEvent('esx:onPlayerDeath')
+end)
 
-  end)
-
+AddEventHandler('esx:onPlayerDeath', function()
+	isDead = true
 end)
 
 AddEventHandler('skinchanger:loadDefaultModel', function()
-  LoadoutLoaded = false
+	LoadoutLoaded = false
 end)
 
 AddEventHandler('skinchanger:modelLoaded', function()
   while not ESX.PlayerLoaded do
-    Citizen.Wait(0)
+    Citizen.Wait(1)
   end
 
   TriggerEvent('esx:restoreLoadout')
 end)
 
-AddEventHandler('esx:restoreLoadout', function ()
+AddEventHandler('esx:restoreLoadout', function()
   local playerPed = GetPlayerPed(-1)
 
   RemoveAllPedWeapons(playerPed, true)
@@ -166,24 +172,32 @@ end)
 
 RegisterNetEvent('esx:addWeapon')
 AddEventHandler('esx:addWeapon', function(weaponName, ammo)
-  local playerPed  = GetPlayerPed(-1)
-  local weaponHash = GetHashKey(weaponName)
+	local playerPed  = GetPlayerPed(-1)
+	local weaponHash = GetHashKey(weaponName)
 
-  GiveWeaponToPed(playerPed, weaponHash, ammo, false, false)
+	GiveWeaponToPed(playerPed, weaponHash, ammo, false, false)
+	--AddAmmoToPed(playerPed, weaponHash, ammo) possibly not needed
 end)
 
 RegisterNetEvent('esx:removeWeapon')
-AddEventHandler('esx:removeWeapon', function(weaponName)
-  local playerPed  = GetPlayerPed(-1)
-  local weaponHash = GetHashKey(weaponName)
+AddEventHandler('esx:removeWeapon', function(weaponName, ammo)
+	local playerPed  = GetPlayerPed(-1)
+	local weaponHash = GetHashKey(weaponName)
 
-  RemoveWeaponFromPed(playerPed,  weaponHash)
+	RemoveWeaponFromPed(playerPed,  weaponHash)
+
+	if ammo then
+		local pedAmmo   = GetAmmoInPedWeapon(playerPed, weaponHash)
+		local finalAmmo = math.floor(pedAmmo - ammo)
+		SetPedAmmo(playerPed, weaponHash, finalAmmo)
+	else
+		SetPedAmmo(playerPed, weaponHash, 0) -- remove leftover ammo
+	end
 end)
 
 -- Commands
 RegisterNetEvent('esx:teleport')
 AddEventHandler('esx:teleport', function(pos)
-
   pos.x = pos.x + 0.0
   pos.y = pos.y + 0.0
   pos.z = pos.z + 0.0
@@ -192,7 +206,7 @@ AddEventHandler('esx:teleport', function(pos)
 
   while not HasCollisionLoadedAroundEntity(GetPlayerPed(-1)) do
     RequestCollisionAtCoord(pos.x, pos.y, pos.z)
-    Citizen.Wait(0)
+    Citizen.Wait(1)
   end
 
   SetEntityCoords(GetPlayerPed(-1), pos.x, pos.y, pos.z)
@@ -237,7 +251,7 @@ AddEventHandler('esx:playAnim', function(dict, anim)
     RequestAnimDict(dict)
 
     while not HasAnimDictLoaded(dict) do
-      Wait(0)
+      Citizen.Wait(1)
     end
 
     TaskPlayAnim(pid, dict, anim, 1.0, -1.0, 20000, 0, 1, true, true, true)
@@ -254,7 +268,7 @@ AddEventHandler('esx:playEmote', function(emote)
     local playerPed = GetPlayerPed(-1)
 
     TaskStartScenarioInPlace(playerPed, emote, 0, false);
-    Wait(20000)
+    Citizen.Wait(20000)
     ClearPedTasks(playerPed)
 
   end)
@@ -337,7 +351,6 @@ AddEventHandler('esx:pickupWeapon', function(weaponPickup, weaponName,ammo)
 
   local ped          = GetPlayerPed(-1)
   local playerPedPos = GetEntityCoords(ped, true)
-  print(ammo)
   CreateAmbientPickup(GetHashKey(weaponPickup), playerPedPos.x + 2.0, playerPedPos.y, playerPedPos.z + 0.5, 0, ammo, 1, false, true)
   
 end)
@@ -356,7 +369,7 @@ AddEventHandler('esx:spawnPed', function(model)
     RequestModel(model)
 
     while not HasModelLoaded(model)  do
-      Citizen.Wait(0)
+      Citizen.Wait(1)
     end
 
     CreatePed(5,  model,  x,  y,  z,  0.0,  true,  false)
@@ -407,7 +420,7 @@ Citizen.CreateThread(function()
 
   while true do
 
-    Wait(0)
+    Citizen.Wait(1)
 
     local playerPed      = GetPlayerPed(-1)
     local loadout        = {}
@@ -461,11 +474,10 @@ end)
 Citizen.CreateThread(function()
   while true do
 
-    Wait(0)
+    Citizen.Wait(10)
 
-    if IsControlPressed(0, Keys["F2"]) and GetLastInputMethod(2) and not ESX.UI.Menu.IsOpen('default', 'es_extended', 'inventory') and (GetGameTimer() - GUI.Time) > 150 then
+    if IsControlJustReleased(0, Keys["F2"]) and GetLastInputMethod(2) and not isDead and not ESX.UI.Menu.IsOpen('default', 'es_extended', 'inventory') then
       ESX.ShowInventory()
-      GUI.Time  = GetGameTimer()
     end
 
   end
@@ -477,14 +489,14 @@ if Config.ShowDotAbovePlayer then
   Citizen.CreateThread(function()
     while true do
 
-      Citizen.Wait(0)
+      Citizen.Wait(1)
 
       local players = ESX.Game.GetPlayers()
 
       for i = 1, #players, 1 do
         if players[i] ~= PlayerId() then
           local ped    = GetPlayerPed(players[i])
-          local headId = Citizen.InvokeNative(0xBFEFE3321A3F5015, ped, ('·'), false, false, '', false)
+          local headId = CreateMpGamerTag(ped, ('·'), false, false, '', false)
         end
       end
 
@@ -499,7 +511,7 @@ if Config.DisableWantedLevel then
   Citizen.CreateThread(function()
     while true do
 
-      Citizen.Wait(0)
+      Citizen.Wait(10)
 
       local playerId = PlayerId()
 
@@ -572,7 +584,7 @@ Citizen.CreateThread(function()
 
   while true do
 
-    Citizen.Wait(0)
+    Citizen.Wait(1000)
 
     local playerPed = GetPlayerPed(-1)
 
