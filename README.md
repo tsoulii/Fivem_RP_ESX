@@ -1,6 +1,6 @@
 # Fivem_RP_ESX
 
-### The project is still under construction.
+### :bangbang: The project is still under construction. :back: :soon:
 
 If you want to join, write me a private message or let me know the [discord](https://discord.gg/TRWXRDw)
 
@@ -13,7 +13,7 @@ A collection of ready-to-implement plugins for fivem roleplay server
 - [FiveM Native Reference](https://runtime.fivem.net/doc/reference.html)
 
 ### Package Content
-1. One sql file responsible for building the entire database for all contained in the plugin repository(default language), thanks to which you do not have to perform individual queries to the database. If you want to choose a language when creating a database, you can use my [database installe](https://zelkowski.pl/fivem/)
+1. One sql file responsible for building the entire database for all contained in the plugin repository(default language), thanks to which you do not have to perform individual queries to the database. If you want to choose a language when creating a database, you can use my [database installer](https://zelkowski.pl/fivem/)
 2. Useful administrative tools
      - [icecon](https://github.com/icedream/icecon/releases)
      - icecon script designed for windows, requiring a simple configuration simplifying connecting to the console
@@ -29,16 +29,8 @@ A collection of ready-to-implement plugins for fivem roleplay server
 	 - [esx_menu_default](https://github.com/ESX-Org/esx_menu_default)
 	 - [esx_menu_dialog](https://github.com/ESX-Org/esx_menu_dialog)
 	 - [esx_menu_list](https://github.com/ESX-Org/esx_menu_list)
-	
-	
-- [x] mysql-async
-- [x] essentialmode
-- [x] esplugin_mysql
-- [x] es_admin2
-- [x] es_extended
-- [x] esx_menu_default
-- [x] esx_menu_list
-- [x] esx_menu_dialog
+	 
+- [ ] esx_skin
 - [ ] esx_phone
 - [x] esx_addonaccount
 - [ ] esx_society
@@ -90,7 +82,6 @@ A collection of ready-to-implement plugins for fivem roleplay server
 - [ ] ELS-FiveM
 - [ ] esx_voice
 - [ ] esx_aiomenu
-
 
 # Fivem_RP_ESX
 es_extended
