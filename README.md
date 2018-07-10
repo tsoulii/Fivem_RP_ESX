@@ -33,47 +33,45 @@ This repository is based on the [ESX-Org](https://github.com/ESX-Org) repositori
 	 - [esx_menu_list](https://github.com/ESX-Org/esx_menu_list)
 	 
 ### To do: 
-- [x] esx_phone
-- [x] esx_society
+- [x] [esx_phone](https://github.com/ESX-Org/esx_phone)
+- [x] [esx_society](https://github.com/ESX-Org/esx_society)
 - [x] [skinchanger](https://github.com/ESX-Org/skinchanger)
-- [x] [esx_skin] (https://github.com/ESX-Org/esx_skin)
-- [ ] esx_barbershop
-- [ ] esx_ambulancejob
-- [ ] esx_billing
-- [ ] esx_datastore
-- [ ] esx_addoninventory
-- [ ] esx_policejob
-- [ ] esx_identity
-- [ ] esx_holdup
-- [ ] esx_rpchat
-- [ ] esx_status
-- [ ] esx_basicneeds
-- [ ] esx_optionalneeds
-- [ ] esx_license
-- [ ] esx_dmvschool
-- [ ] esx_jobs
-- [ ] esx_joblisting
-- [ ] esx_taxijob
-- [ ] esx_mecanojob
-- [ ] esx_celldoors
-- [ ] esx_truckerjob
-- [ ] esx_atm
-- [ ] esx_vehicleshop
-- [ ] esx_shops
-- [ ] esx_clotheshop
-- [ ] esx_lscustom
-- [ ] esx_accessories
-- [ ] instance
-- [ ] esx_property
-- [ ] esx_service
-- [ ] esx_weashops
-- [ ] esx_drugs
-- [ ] esx_animations
-- [ ] esx_slotmachine
+- [x] [esx_skin](https://github.com/ESX-Org/esx_skin)
+- [x] [esx_barbershop](https://github.com/ESX-Org/esx_barbershop)
+- [x] [esx_ambulancejob](https://github.com/ESX-Org/esx_ambulancejob)
+- [x] esx_billing
+- [x] esx_datastore
+- [x] esx_addoninventory
+- [x] esx_policejob
+- [x] esx_identity
+- [x] esx_holdup
+- [x] esx_rpchat
+- [x] esx_status
+- [x] esx_basicneeds
+- [x] esx_optionalneeds
+- [x] esx_license
+- [x] esx_dmvschool
+- [x] esx_jobs
+- [x] esx_joblisting
+- [x] esx_taxijob
+- [x] esx_mecanojob
+- [x] esx_celldoors
+- [x] esx_atm
+- [x] esx_vehicleshop
+- [x] esx_shops
+- [x] esx_clotheshop
+- [x] esx_lscustom
+- [x] esx_accessories
+- [x] instance
+- [x] esx_property
+- [x] esx_service
+- [x] esx_weashops
+- [x] esx_drugs
+- [x] esx_animations
 - [ ] esx_petrol
 - [ ] pNotify
 - [ ] carhud
-- [ ] streetLabel
+- [x] streetLabel
 - [ ] locksystem
 - [ ] TowScript
 - [ ] esx_tattoosShops
