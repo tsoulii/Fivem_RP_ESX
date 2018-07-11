@@ -26,7 +26,7 @@ This repository is based on the [ESX-Org](https://github.com/ESX-Org) repositori
      - [async](https://github.com/ESX-Org/async/releases/latest) 
 	 
 4. Additional roleplay scripts 
-### License and copyright notice:
+License and copyright notice:
      - [loadscreen by Syntasu](https://github.com/Syntasu/synn-loadscreen)
 	 - [FRFuel by thers](https://github.com/thers/FRFuel) replaced esx_petrol for license reasons
 	 - [pNotify by Nick78111](https://github.com/Nick78111/pNotify)
@@ -36,7 +36,7 @@ This repository is based on the [ESX-Org](https://github.com/ESX-Org) repositori
 	 - [streetLabel](https://github.com/lowheartrate/streetLabel)
 	 - [handsup](https://github.com/KadDarem/Walkable-Hands-Up)
 	 - [esx_eden_garage](https://github.com/snyx95/esx_eden_garage)
-	 - [locksystem](https://github.com/Deediezi/FiveM_LockSystem)
+	 - [LockSystem 3.0](https://github.com/Deediezi/FiveM_LockSystem)
 	 
 
 ### [ESX](https://github.com/ESX-Org): 

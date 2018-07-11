@@ -1,15 +1,29 @@
-CREATE DATABASE IF NOT EXISTS `essentialmode` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */;
+CREATE DATABASE IF NOT EXISTS `essentialmode`;
 USE `essentialmode`;
 
 -- Dumping structure for table essentialmode.users
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `identifier` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `license` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `money` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_bin DEFAULT '',
+  `skin` longtext COLLATE utf8mb4_bin,
+  `job` varchar(255) COLLATE utf8mb4_bin DEFAULT 'unemployed',
+  `job_grade` int(11) DEFAULT '0',
+  `loadout` longtext COLLATE utf8mb4_bin,
+  `position` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
   `bank` int(11) DEFAULT NULL,
   `permission_level` int(11) DEFAULT NULL,
   `group` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
-  
+  `firstname` varchar(50) COLLATE utf8mb4_bin DEFAULT '',
+  `lastname` varchar(50) COLLATE utf8mb4_bin DEFAULT '',
+  `dateofbirth` varchar(25) COLLATE utf8mb4_bin DEFAULT '',
+  `sex` varchar(10) COLLATE utf8mb4_bin DEFAULT '',
+  `height` varchar(5) COLLATE utf8mb4_bin DEFAULT '',
+  `status` longtext COLLATE utf8mb4_bin,
+  `isDead` bit(1) DEFAULT b'0',
+  `last_property` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+  `phone_number` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 CREATE TABLE `addon_account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -25,21 +39,6 @@ CREATE TABLE `addon_account_data` (
   `owner` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
-ALTER TABLE `users`
-	ADD COLUMN `name` VARCHAR(255) NULL DEFAULT '' AFTER `money`,
-	ADD COLUMN `skin` LONGTEXT NULL AFTER `name`,
-	ADD COLUMN `job` varchar(255) NULL DEFAULT 'unemployed' AFTER `skin`,
-	ADD COLUMN `job_grade` INT NULL DEFAULT 0 AFTER `job`,
-	ADD COLUMN `loadout` LONGTEXT NULL AFTER `job_grade`,
-	ADD COLUMN `position` VARCHAR(255) NULL AFTER `loadout`,
-	ADD COLUMN `isDead` BIT(1) DEFAULT b'0',
-	ADD COLUMN `status` LONGTEXT NULL,
-	ADD COLUMN `firstname` VARCHAR(50) NULL DEFAULT '',
-	ADD COLUMN `lastname` VARCHAR(50) NULL DEFAULT '',
-	ADD COLUMN `dateofbirth` VARCHAR(25) NULL DEFAULT '',
-	ADD COLUMN `sex` VARCHAR(10) NULL DEFAULT '',
-	ADD COLUMN `height` VARCHAR(5) NULL DEFAULT '',
-	ADD COLUMN `last_property` VARCHAR(255) NULL;
 CREATE TABLE `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -82,16 +81,6 @@ CREATE TABLE `user_inventory` (
   `count` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 );
-CREATE TABLE `user_contacts` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`identifier` varchar(255) NOT NULL,
-	`name` varchar(255) NOT NULL,
-	`number` int(11) NOT NULL,	
-	PRIMARY KEY (`id`)
-);
-ALTER TABLE `users`
-	ADD COLUMN `phone_number` INT NULL
-;
 CREATE TABLE `society_moneywash` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`identifier` varchar(60) NOT NULL,
@@ -116,7 +105,6 @@ CREATE TABLE `datastore` (
   `shared` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 );
-
 CREATE TABLE `datastore_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -129,36 +117,27 @@ CREATE TABLE `addon_inventory` (
 	`name` varchar(255) NOT NULL,
 	`label` varchar(255) NOT NULL,
 	`shared` int(11) NOT NULL,
-
 	PRIMARY KEY (`id`)
 );
-
 CREATE TABLE `addon_inventory_items` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`inventory_name` varchar(255) NOT NULL,
 	`name` varchar(255) NOT NULL,
 	`count` int(11) NOT NULL,
 	`owner` varchar(60) DEFAULT NULL,
-
 	PRIMARY KEY (`id`)
 );
 CREATE TABLE `licenses` (
 	`type` varchar(60) NOT NULL,
 	`label` varchar(60) NOT NULL,
-
 	PRIMARY KEY (`type`)
 );
-
 CREATE TABLE `user_licenses` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`type` varchar(60) NOT NULL,
 	`owner` varchar(60) NOT NULL,
-
 	PRIMARY KEY (`id`)
 );
-
-
-
 CREATE TABLE `characters` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`identifier` VARCHAR(255) NOT NULL,
@@ -167,12 +146,8 @@ CREATE TABLE `characters` (
 	`dateofbirth` VARCHAR(255) NOT NULL,
 	`sex` VARCHAR(1) NOT NULL DEFAULT 'M',
 	`height` VARCHAR(128) NOT NULL,
-
 	PRIMARY KEY (`id`)
 );
-
-
-
 INSERT INTO `addon_account` (name, label, shared) VALUES
   ('society_ambulance', 'Ambulance', 1)
 ;
@@ -191,7 +166,6 @@ INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_
 INSERT INTO `addon_account` (name, label, shared) VALUES
   ('caution', 'Caution', 0)
 ;
-
 INSERT INTO `jobs` (name, label) VALUES
   ('slaughterer', 'Abatteur'),
   ('fisherman', 'Pêcheur'),
@@ -201,7 +175,6 @@ INSERT INTO `jobs` (name, label) VALUES
   ('reporter', 'Journaliste'),
   ('tailor', 'Couturier')
 ;
-
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
   ('lumberjack', 0, 'employee', 'Intérimaire', 0, '{}', '{}'),
   ('fisherman', 0, 'employee', 'Intérimaire', 0, '{}', '{}'),
@@ -211,7 +184,6 @@ INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_
   ('miner', 0, 'employee', 'Intérimaire', 0, '{"tshirt_2":1,"ears_1":8,"glasses_1":15,"torso_2":0,"ears_2":2,"glasses_2":3,"shoes_2":1,"pants_1":75,"shoes_1":51,"bags_1":0,"helmet_2":0,"pants_2":7,"torso_1":71,"tshirt_1":59,"arms":2,"bags_2":0,"helmet_1":0}', '{}'),
   ('slaughterer',0,'employee','Intérimaire',0,'{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":67,\"pants_1\":36,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":0,\"torso_1\":56,\"beard_2\":6,\"shoes_1\":12,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":15,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":0,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}','{\"age_1\":0,\"glasses_2\":0,\"beard_1\":5,\"decals_2\":0,\"beard_4\":0,\"shoes_2\":0,\"tshirt_2\":0,\"lipstick_2\":0,\"hair_2\":0,\"arms\":72,\"pants_1\":45,\"skin\":29,\"eyebrows_2\":0,\"shoes\":10,\"helmet_1\":-1,\"lipstick_1\":0,\"helmet_2\":0,\"hair_color_1\":0,\"glasses\":0,\"makeup_4\":0,\"makeup_1\":0,\"hair_1\":2,\"bproof_1\":0,\"bags_1\":0,\"mask_1\":0,\"lipstick_3\":0,\"chain_1\":0,\"eyebrows_4\":0,\"sex\":1,\"torso_1\":49,\"beard_2\":6,\"shoes_1\":24,\"decals_1\":0,\"face\":19,\"lipstick_4\":0,\"tshirt_1\":9,\"mask_2\":0,\"age_2\":0,\"eyebrows_3\":0,\"chain_2\":0,\"glasses_1\":5,\"ears_1\":-1,\"bags_2\":0,\"ears_2\":0,\"torso_2\":0,\"bproof_2\":0,\"makeup_2\":0,\"eyebrows_1\":0,\"makeup_3\":0,\"pants_2\":0,\"beard_3\":0,\"hair_color_2\":4}')
 ;
-
 INSERT INTO `items` (`name`, `label`, `limit`) VALUES
  ('bread', 'Pain', 10),
  ('water', 'Eau', 5),
@@ -235,7 +207,6 @@ INSERT INTO `items` (`name`, `label`, `limit`) VALUES
   ('fabric', 'Tissu', 80),
   ('clothe', 'Vêtement', 40)
 ;
-
 INSERT INTO `jobs` (name, label) VALUES
   ('ambulance','Ambulance')
 ;
@@ -243,7 +214,6 @@ INSERT INTO `items` (name, label, `limit`) VALUES
   ('bandage','Bandage', 20),
   ('medikit','Medikit', 5)
 ;
-
 INSERT INTO `licenses` (`type`, `label`) VALUES
 	('dmv', 'Code de la route'),
 	('drive', 'Permis de conduire'),
@@ -253,19 +223,15 @@ INSERT INTO `licenses` (`type`, `label`) VALUES
 INSERT INTO `addon_account` (name, label, shared) VALUES
 	('society_police', 'Police', 1)
 ;
-
 INSERT INTO `datastore` (name, label, shared) VALUES
 	('society_police', 'Police', 1)
 ;
-
 INSERT INTO `addon_inventory` (name, label, shared) VALUES
 	('society_police', 'Police', 1)
 ;
-
 INSERT INTO `jobs` (name, label) VALUES
 	('police','LSPD')
 ;
-
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
 	('police',0,'recruit','Recrue',20,'{}','{}'),
 	('police',1,'officer','Officier',40,'{}','{}'),
@@ -273,16 +239,13 @@ INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_
 	('police',3,'lieutenant','Lieutenant',85,'{}','{}'),
 	('police',4,'boss','Commandant',100,'{}','{}')
 ;
-
 CREATE TABLE `fine_types` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`label` varchar(255) DEFAULT NULL,
 	`amount` int(11) DEFAULT NULL,
 	`category` int(11) DEFAULT NULL,
-
 	PRIMARY KEY (`id`)
 );
-
 INSERT INTO `fine_types` (label, amount, category) VALUES
 	('Usage abusif du klaxon',30,0),
 	('Franchir une ligne continue',40,0),
@@ -341,36 +304,30 @@ ALTER TABLE jobs add whitelisted BOOLEAN NOT NULL DEFAULT FALSE;
 INSERT INTO `addon_account` (name, label, shared) VALUES
 	('society_cardealer','Concessionnaire',1)
 ;
-
 INSERT INTO `addon_inventory` (name, label, shared) VALUES
 	('society_cardealer','Concesionnaire',1)
 ;
-
 INSERT INTO `jobs` (name, label) VALUES
 	('cardealer','Concessionnaire')
 ;
-
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
 	('cardealer',0,'recruit','Recrue',10,'{}','{}'),
 	('cardealer',1,'novice','Novice',25,'{}','{}'),
 	('cardealer',2,'experienced','Experimente',40,'{}','{}'),
 	('cardealer',3,'boss','Patron',0,'{}','{}')
 ;
-
 CREATE TABLE `cardealer_vehicles` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`vehicle` varchar(255) NOT NULL,
 	`price` int(11) NOT NULL,
 	PRIMARY KEY (`id`)
 );
-
 CREATE TABLE `owned_vehicles` (
 	`owner` varchar(30) DEFAULT NULL,
 	`plate` varchar(12) NOT NULL,
 	`vehicle` longtext DEFAULT NULL,
 	PRIMARY KEY (`plate`)
 );
-
 CREATE TABLE `rented_vehicles` (
 	`vehicle` varchar(60) NOT NULL,
 	`plate` varchar(12) NOT NULL,
@@ -378,17 +335,13 @@ CREATE TABLE `rented_vehicles` (
 	`base_price` int(11) NOT NULL,
 	`rent_price` int(11) NOT NULL,
 	`owner` varchar(30) NOT NULL,
-
 	PRIMARY KEY (`plate`)
 );
-
 CREATE TABLE `vehicle_categories` (
 	`name` varchar(60) NOT NULL,
 	`label` varchar(60) NOT NULL,
-
 	PRIMARY KEY (`name`)
 );
-
 INSERT INTO `vehicle_categories` (name, label) VALUES
 	('compacts','Compacts'),
 	('coupes','Coupés'),
@@ -402,7 +355,6 @@ INSERT INTO `vehicle_categories` (name, label) VALUES
 	('vans','Vans'),
 	('motorcycles','Motos')
 ;
-
 CREATE TABLE `vehicles` (
 	`name` varchar(60) NOT NULL,
 	`model` varchar(60) NOT NULL,
@@ -410,7 +362,6 @@ CREATE TABLE `vehicles` (
 	`category` varchar(60) DEFAULT NULL,
 	PRIMARY KEY (`model`)
 );
-
 INSERT INTO `vehicles` (name, model, price, category) VALUES
 	('Blade','blade',15000,'muscle'),
 	('Buccaneer','buccaneer',18000,'muscle'),
@@ -656,19 +607,15 @@ INSERT INTO `vehicles` (name, model, price, category) VALUES
 INSERT INTO `addon_account` (name, label, shared) VALUES
 	('society_taxi', 'Taxi', 1)
 ;
-
 INSERT INTO `datastore` (name, label, shared) VALUES
 	('society_taxi', 'Taxi', 1)
 ;
-
 INSERT INTO `addon_inventory` (name, label, shared) VALUES
 	('society_taxi', 'Taxi', 1)
 ;
-
 INSERT INTO `jobs` (name, label) VALUES
 	('taxi', 'Taxi')
 ;
-
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
 	('taxi',0,'recrue','Recrue',12,'{}','{}'),
 	('taxi',1,'novice','Novice',24,'{}','{}'),
@@ -679,15 +626,12 @@ INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_
 INSERT INTO `addon_account` (name, label, shared) VALUES
 	('society_mecano', 'Mécano', 1)
 ;
-
 INSERT INTO `addon_inventory` (name, label, shared) VALUES
 	('society_mecano', 'Mécano', 1)
 ;
-
 INSERT INTO `jobs` (name, label) VALUES
 	('mecano', 'Mécano')
 ;
-
 INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_female) VALUES
 	('mecano',0,'recrue','Recrue',12,'{}','{}'),
 	('mecano',1,'novice','Novice',24,'{}','{}'),
@@ -695,7 +639,6 @@ INSERT INTO `job_grades` (job_name, grade, name, label, salary, skin_male, skin_
 	('mecano',3,'chief',"Chef d\'équipe",48,'{}','{}'),
 	('mecano',4,'boss','Patron',0,'{}','{}')
 ;
-
 INSERT INTO `items` (name, label, `limit`) VALUES
 	('gazbottle', 'bouteille de gaz', 11),
 	('fixtool', 'outils réparation', 6),
@@ -711,7 +654,6 @@ CREATE TABLE `shops` (
 	`price` int(11) NOT NULL,
 	PRIMARY KEY (`id`)
 );
-
 INSERT INTO `shops` (store, item, price) VALUES
 	('TwentyFourSeven','bread',30),
 	('TwentyFourSeven','water',15),
@@ -726,34 +668,24 @@ INSERT INTO `datastore` (name, label, shared) VALUES
   ('user_helmet','Helmet',0),
   ('user_mask','Mask',0)
 ;
-
-
-
 INSERT INTO `addon_account` (name, label, shared) VALUES
   ('property_black_money','Argent Sale Propriété',0)
 ;
-
 INSERT INTO `addon_inventory` (name, label, shared) VALUES
   ('property','Propriété',0)
 ;
-
 INSERT INTO `datastore` (name, label, shared) VALUES
   ('property','Propriété',0)
 ;
-
 CREATE TABLE `owned_properties` (
-
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `price` double NOT NULL,
   `rented` int(11) NOT NULL,
   `owner` varchar(60) NOT NULL,
-
   PRIMARY KEY (`id`)
 );
-
 CREATE TABLE `properties` (
-
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `label` varchar(255) DEFAULT NULL,
@@ -768,10 +700,8 @@ CREATE TABLE `properties` (
   `is_gateway` int(11) DEFAULT NULL,
   `room_menu` varchar(255) DEFAULT NULL,
   `price` int(11) NOT NULL,
-
   PRIMARY KEY (`id`)
 );
-
 INSERT INTO `properties` VALUES
   (1,'WhispymoundDrive','2677 Whispymound Drive','{\"y\":564.89,\"z\":182.959,\"x\":119.384}','{\"x\":117.347,\"y\":559.506,\"z\":183.304}','{\"y\":557.032,\"z\":183.301,\"x\":118.037}','{\"y\":567.798,\"z\":182.131,\"x\":119.249}','[]',NULL,1,1,0,'{\"x\":118.748,\"y\":566.573,\"z\":175.697}',1500000),
   (2,'NorthConkerAvenue2045','2045 North Conker Avenue','{\"x\":372.796,\"y\":428.327,\"z\":144.685}','{\"x\":373.548,\"y\":422.982,\"z\":144.907},','{\"y\":420.075,\"z\":145.904,\"x\":372.161}','{\"x\":372.454,\"y\":432.886,\"z\":143.443}','[]',NULL,1,1,0,'{\"x\":377.349,\"y\":429.422,\"z\":137.3}',1500000),
@@ -816,21 +746,16 @@ INSERT INTO `properties` VALUES
   (41,'DellPerroHeightst4','Dell Perro Heights - Apt 28',NULL,'{\"x\":-1452.125,\"y\":-540.591,\"z\":73.044}','{\"x\":-1455.435,\"y\":-535.79,\"z\":73.044}',NULL,'[]','DellPerroHeights',0,1,0,'{\"x\":-1467.058,\"y\":-527.571,\"z\":72.443}',1700000),
   (42,'DellPerroHeightst7','Dell Perro Heights - Apt 30',NULL,'{\"x\":-1451.562,\"y\":-523.535,\"z\":55.928}','{\"x\":-1456.02,\"y\":-519.209,\"z\":55.929}',NULL,'[]','DellPerroHeights',0,1,0,'{\"x\":-1457.026,\"y\":-530.219,\"z\":55.937}',1700000)
 ;
-
 CREATE TABLE `weashops` (
-
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `item` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
-
   PRIMARY KEY (`id`)
 );
-
 INSERT INTO `licenses` (type, label) VALUES
   ('weapon', "Permis de port d'arme")
 ;
-
 INSERT INTO `weashops` (name, item, price) VALUES
 	('GunShop','WEAPON_PISTOL',300),
 	('BlackWeashop','WEAPON_PISTOL',500),
@@ -883,5 +808,12 @@ INSERT INTO `items` (name, label, `limit`) VALUES
 	('opium', 'Opium', 50),
 	('opium_pooch', 'Pochon de opium', 10)
 ;
-
+CREATE TABLE `user_contacts` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`identifier` varchar(255) NOT NULL,
+	`name` varchar(255) NOT NULL,
+	`number` int(11) NOT NULL,
+	
+	PRIMARY KEY (`id`)
+);
 ALTER TABLE `owned_vehicles` ADD `state` BOOLEAN NOT NULL DEFAULT FALSE COMMENT 'Etat de la voiture' AFTER `owner`;
