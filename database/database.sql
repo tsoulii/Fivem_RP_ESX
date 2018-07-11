@@ -91,6 +91,63 @@ CREATE TABLE `society_moneywash` (
 	`amount` int(11) NOT NULL,
 	PRIMARY KEY (`id`)
 );
+CREATE TABLE `billing` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`identifier` varchar(255) NOT NULL,
+	`sender` varchar(255) NOT NULL,
+	`target_type` varchar(50) NOT NULL,
+	`target` varchar(255) NOT NULL,
+	`label` varchar(255) NOT NULL,
+	`amount` int(11) NOT NULL,
+	PRIMARY KEY (`id`)
+);
+CREATE TABLE `datastore` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `shared` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `datastore_data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `owner` varchar(255),
+  `data` longtext,
+  PRIMARY KEY (`id`)
+);
+CREATE TABLE `addon_inventory` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`name` varchar(255) NOT NULL,
+	`label` varchar(255) NOT NULL,
+	`shared` int(11) NOT NULL,
+
+	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `addon_inventory_items` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`inventory_name` varchar(255) NOT NULL,
+	`name` varchar(255) NOT NULL,
+	`count` int(11) NOT NULL,
+	`owner` varchar(60) DEFAULT NULL,
+
+	PRIMARY KEY (`id`)
+);
+CREATE TABLE `licenses` (
+	`type` varchar(60) NOT NULL,
+	`label` varchar(60) NOT NULL,
+
+	PRIMARY KEY (`type`)
+);
+
+CREATE TABLE `user_licenses` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`type` varchar(60) NOT NULL,
+	`owner` varchar(60) NOT NULL,
+
+	PRIMARY KEY (`id`)
+);
 INSERT INTO `addon_account` (name, label, shared) VALUES
   ('society_ambulance', 'Ambulance', 1)
 ;
@@ -160,63 +217,7 @@ INSERT INTO `items` (name, label, `limit`) VALUES
   ('medikit','Medikit', 5)
 ;
 ALTER TABLE `users` ADD `isDead` BIT(1) DEFAULT b'0';
-CREATE TABLE `billing` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`identifier` varchar(255) NOT NULL,
-	`sender` varchar(255) NOT NULL,
-	`target_type` varchar(50) NOT NULL,
-	`target` varchar(255) NOT NULL,
-	`label` varchar(255) NOT NULL,
-	`amount` int(11) NOT NULL,
-	PRIMARY KEY (`id`)
-);
-CREATE TABLE `datastore` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `label` varchar(255) NOT NULL,
-  `shared` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-);
 
-CREATE TABLE `datastore_data` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `owner` varchar(255),
-  `data` longtext,
-  PRIMARY KEY (`id`)
-);
-CREATE TABLE `addon_inventory` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`name` varchar(255) NOT NULL,
-	`label` varchar(255) NOT NULL,
-	`shared` int(11) NOT NULL,
-
-	PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `addon_inventory_items` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`inventory_name` varchar(255) NOT NULL,
-	`name` varchar(255) NOT NULL,
-	`count` int(11) NOT NULL,
-	`owner` varchar(60) DEFAULT NULL,
-
-	PRIMARY KEY (`id`)
-);
-CREATE TABLE `licenses` (
-	`type` varchar(60) NOT NULL,
-	`label` varchar(60) NOT NULL,
-
-	PRIMARY KEY (`type`)
-);
-
-CREATE TABLE `user_licenses` (
-	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`type` varchar(60) NOT NULL,
-	`owner` varchar(60) NOT NULL,
-
-	PRIMARY KEY (`id`)
-);
 INSERT INTO `licenses` (`type`, `label`) VALUES
 	('dmv', 'Code de la route'),
 	('drive', 'Permis de conduire'),
@@ -339,9 +340,8 @@ CREATE TABLE `cardealer_vehicles` (
 
 CREATE TABLE `owned_vehicles` (
 	`owner` varchar(30) DEFAULT NULL,
-	`plate` varchar(12) DEFAULT NULL,
+	`plate` varchar(12) NOT NULL,
 	`vehicle` longtext DEFAULT NULL,
-
 	PRIMARY KEY (`plate`)
 );
 
@@ -683,7 +683,6 @@ CREATE TABLE `shops` (
 	`store` varchar(100) NOT NULL,
 	`item` varchar(100) NOT NULL,
 	`price` int(11) NOT NULL,
-
 	PRIMARY KEY (`id`)
 );
 
