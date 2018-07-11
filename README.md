@@ -39,26 +39,26 @@ License and copyright notice:
 	 - [pNotify by Nick78111](https://github.com/Nick78111/pNotify)
 	 - [ELS-FiveM by MrDaGree](https://github.com/MrDaGree/ELS-FiveM)
 	 - [lux_vehcontrol by Lt.Caine](https://forum.fivem.net/t/release-luxart-vehicle-control/17304)
-	 - [esx_aiomenu](https://github.com/ArkSeyonet/esx_aiomenu) :exclamation: warning :exclamation: this plugin is no longer supported and can not be edited except for the ESX team
-	 - [streetLabel](https://github.com/lowheartrate/streetLabel)
-	 - [handsup](https://github.com/KadDarem/Walkable-Hands-Up)
-	 - [esx_eden_garage](https://github.com/snyx95/esx_eden_garage)
-	 - [LockSystem 3.0](https://github.com/Deediezi/FiveM_LockSystem)
+	 - [esx_aiomenu by ArkSeyonet](https://github.com/ArkSeyonet/esx_aiomenu) :exclamation: warning :exclamation: this plugin is no longer supported and can not be edited except for the ESX team
+	 - [streetLabel by lowheartrate](https://github.com/lowheartrate/streetLabel)
+	 - [handsup by KadDarem](https://github.com/KadDarem/Walkable-Hands-Up)
+	 - [esx_eden_garage by snyx95](https://github.com/snyx95/esx_eden_garage)
+	 - [LockSystem 3.0 by Deediezi](https://github.com/Deediezi/FiveM_LockSystem)
 	 
 ### [ESX](https://github.com/ESX-Org): 
 | [esx_addonaccount](https://github.com/ESX-Org/esx_addonaccount) | [esx_menu_default](https://github.com/ESX-Org/esx_menu_default) | [esx_menu_dialog](https://github.com/ESX-Org/esx_menu_dialog) |
 | [esx_menu_list](https://github.com/ESX-Org/esx_menu_list) | [esx_phone](https://github.com/ESX-Org/esx_phone) | [esx_society](https://github.com/ESX-Org/esx_society) |
 | [skinchanger](https://github.com/ESX-Org/skinchanger) | [esx_skin](https://github.com/ESX-Org/esx_skin) | [esx_barbershop](https://github.com/ESX-Org/esx_barbershop) |
-| [esx_ambulancejob](https://github.com/ESX-Org/esx_ambulancejob) | esx_policejob | esx_identity |
-| esx_billing | esx_datastore | esx_addoninventory |
-| esx_holdup | esx_rpchat | esx_jobs |
-| esx_status | esx_basicneeds | esx_optionalneeds |
-| esx_license | esx_dmvschool | esx_mecanojob |
-| esx_joblisting | esx_taxijob | esx_lscustom |
-| esx_celldoors | esx_atm | instance |
-| esx_shops | esx_vehicleshop | esx_clotheshop |
-| esx_accessories | esx_property | esx_property |
-| esx_service | esx_weashops | esx_drugs |
-| esx_animations | ------ | esx_voice |
+| [esx_ambulancejob](https://github.com/ESX-Org/esx_ambulancejob) | [esx_policejob](https://github.com/ESX-Org/esx_policejob) | [esx_identity](https://github.com/ESX-Org/esx_identity) |
+| [esx_billing](https://github.com/ESX-Org/esx_billing) | [esx_datastore](https://github.com/ESX-Org/esx_datastore) | [esx_addoninventory](https://github.com/ESX-Org/esx_addoninventory) |
+| [esx_holdup](https://github.com/ESX-Org/esx_holdup) | [esx_rpchat](https://github.com/ESX-Org/esx_rpchat) | [esx_jobs](https://github.com/ESX-Org/esx_jobs) |
+| [esx_status](https://github.com/ESX-Org/esx_status) | [esx_basicneeds](https://github.com/ESX-Org/esx_basicneeds) | [esx_optionalneeds](https://github.com/ESX-Org/esx_optionalneeds) |
+| [esx_license](https://github.com/ESX-Org/esx_license) | [esx_dmvschool](https://github.com/ESX-Org/esx_dmvschool) | [esx_mecanojob](https://github.com/ESX-Org/esx_mecanojob) |
+| [esx_joblisting](https://github.com/ESX-Org/esx_joblisting) | [esx_taxijob](https://github.com/ESX-Org/esx_taxijob) | [esx_lscustom](https://github.com/ESX-Org/esx_lscustom) |
+| [esx_celldoors](https://github.com/StockholmCityRP/esx_celldoors) | [esx_atm](https://github.com/ESX-Org/esx_atm) | [instance](https://github.com/ESX-Org/instance) |
+| [esx_shops](https://github.com/ESX-Org/esx_shops) | [esx_vehicleshop](https://github.com/ESX-Org/esx_vehicleshop) | [esx_clotheshop](https://github.com/ESX-Org/esx_clotheshop) |
+| [esx_accessories](https://github.com/ESX-Org/esx_accessories) | [esx_property](https://github.com/ESX-Org/esx_property) | [esx_property](https://github.com/ESX-Org/esx_property) |
+| [esx_service](https://github.com/ESX-Org/esx_service) | [esx_weashops](https://github.com/ESX-Org/esx_weashops) | [esx_drugs](https://github.com/ESX-Org/esx_drugs) |
+| [esx_animations](https://github.com/ESX-Org/esx_animations) | [esx_voice](https://github.com/ESX-Org/esx_voice) |
 
 
