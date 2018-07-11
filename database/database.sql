@@ -883,3 +883,5 @@ INSERT INTO `items` (name, label, `limit`) VALUES
 	('opium', 'Opium', 50),
 	('opium_pooch', 'Pochon de opium', 10)
 ;
+
+ALTER TABLE `owned_vehicles` ADD `state` BOOLEAN NOT NULL DEFAULT FALSE COMMENT 'Etat de la voiture' AFTER `owner`;

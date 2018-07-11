@@ -25,14 +25,25 @@ This repository is based on the [ESX-Org](https://github.com/ESX-Org) repositori
      - [esplugin_mysql](https://forum.fivem.net/t/release-essentialmode-base/3665/1181)
      - [async](https://github.com/ESX-Org/async/releases/latest) 
 	 
-4. Additional roleplay scripts
+4. Additional roleplay scripts 
+### License and copyright notice:
      - [loadscreen by Syntasu](https://github.com/Syntasu/synn-loadscreen)
-	 - [esx_addonaccount](https://github.com/ESX-Org/esx_addonaccount)
-	 - [esx_menu_default](https://github.com/ESX-Org/esx_menu_default)
-	 - [esx_menu_dialog](https://github.com/ESX-Org/esx_menu_dialog)
-	 - [esx_menu_list](https://github.com/ESX-Org/esx_menu_list)
+	 - [FRFuel by thers](https://github.com/thers/FRFuel) replaced esx_petrol for license reasons
+	 - [pNotify by Nick78111](https://github.com/Nick78111/pNotify)
+	 - [ELS-FiveM by MrDaGree](https://github.com/MrDaGree/ELS-FiveM)
+	 - [lux_vehcontrol by Lt.Caine](https://forum.fivem.net/t/release-luxart-vehicle-control/17304)
+	 - [esx_aiomenu](https://github.com/ArkSeyonet/esx_aiomenu) :exclamation: warning :exclamation: this plugin is no longer supported and can not be edited except for the ESX team
+	 - [streetLabel](https://github.com/lowheartrate/streetLabel)
+	 - [handsup](https://github.com/KadDarem/Walkable-Hands-Up)
+	 - [esx_eden_garage](https://github.com/snyx95/esx_eden_garage)
+	 - [locksystem](https://github.com/Deediezi/FiveM_LockSystem)
 	 
-### To do: 
+
+### [ESX](https://github.com/ESX-Org): 
+- [x] [esx_addonaccount](https://github.com/ESX-Org/esx_addonaccount)
+- [x] [esx_menu_default](https://github.com/ESX-Org/esx_menu_default)
+- [x] [esx_menu_dialog](https://github.com/ESX-Org/esx_menu_dialog)
+- [x] [esx_menu_list](https://github.com/ESX-Org/esx_menu_list)
 - [x] [esx_phone](https://github.com/ESX-Org/esx_phone)
 - [x] [esx_society](https://github.com/ESX-Org/esx_society)
 - [x] [skinchanger](https://github.com/ESX-Org/skinchanger)
@@ -68,16 +79,4 @@ This repository is based on the [ESX-Org](https://github.com/ESX-Org) repositori
 - [x] esx_weashops
 - [x] esx_drugs
 - [x] esx_animations
-- [x] [esx_petrol](https://git-iut.univ-lille1.fr/oliveras/ESX-Server)
-- [ ] pNotify
-- [ ] carhud
-- [x] streetLabel
-- [ ] locksystem
-- [ ] TowScript
-- [ ] esx_tattoosShops
-- [ ] handsup
-- [ ] esx_eden_garage
-- [ ] lux_vehcontrol
-- [ ] ELS-FiveM
-- [ ] esx_voice
-- [ ] esx_aiomenu
+- [x] esx_voice

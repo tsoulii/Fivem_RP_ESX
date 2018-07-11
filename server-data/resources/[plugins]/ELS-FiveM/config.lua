@@ -1,13 +1,13 @@
+-- If you are using Linux then please note that files that require .xml at the end are case-sensitive, meaning if your xml is called "PoLICe.xml" then here it needs to be like that also.
 vcf_files = {
-	--"POLICE.xml",
+	"POLICE.xml",
 	"POLICE2.xml",
 	"POLICE3.xml",
 	"POLICE4.xml",
 	"PRANGER.xml",
 	"SHERIFF2.xml",
 	"AMBULANCE.xml",
-	"FBI2.xml",
-	"major.xml"
+	"FBI2.xml"
 }
 
 pattern_files = {
