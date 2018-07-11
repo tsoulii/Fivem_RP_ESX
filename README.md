@@ -46,7 +46,6 @@ License and copyright notice:
 	 - [LockSystem 3.0](https://github.com/Deediezi/FiveM_LockSystem)
 	 
 ### [ESX](https://github.com/ESX-Org): 
-| :---         |     :---:      |          ---: |
 | [esx_addonaccount](https://github.com/ESX-Org/esx_addonaccount) | [esx_menu_default](https://github.com/ESX-Org/esx_menu_default) | [esx_menu_dialog](https://github.com/ESX-Org/esx_menu_dialog) |
 | [esx_menu_list](https://github.com/ESX-Org/esx_menu_list) | [esx_phone](https://github.com/ESX-Org/esx_phone) | [esx_society](https://github.com/ESX-Org/esx_society) |
 | [skinchanger](https://github.com/ESX-Org/skinchanger) | [esx_skin](https://github.com/ESX-Org/esx_skin) | [esx_barbershop](https://github.com/ESX-Org/esx_barbershop) |
