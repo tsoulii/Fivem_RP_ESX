@@ -1,6 +1,13 @@
 # Fivem_RP_ESX
 
-### The project is still under construction. :back: :soon:
+### The repository allows you to create a ready Role Play server in a few seconds.
+# How to install
+1. Download artifacts server from [here](https://docs.fivem.net/server/)
+2. paste files from server-data (you do not have to download "cfx-server-data" they are included in the package)
+3. import database.sql to your database
+4. edit server.cfg
+5. run server!
+
 
 If you want to join, write me a private message or let me know the [discord](https://discord.gg/TRWXRDw)
 
@@ -38,45 +45,21 @@ License and copyright notice:
 	 - [esx_eden_garage](https://github.com/snyx95/esx_eden_garage)
 	 - [LockSystem 3.0](https://github.com/Deediezi/FiveM_LockSystem)
 	 
-
 ### [ESX](https://github.com/ESX-Org): 
-- [x] [esx_addonaccount](https://github.com/ESX-Org/esx_addonaccount)
-- [x] [esx_menu_default](https://github.com/ESX-Org/esx_menu_default)
-- [x] [esx_menu_dialog](https://github.com/ESX-Org/esx_menu_dialog)
-- [x] [esx_menu_list](https://github.com/ESX-Org/esx_menu_list)
-- [x] [esx_phone](https://github.com/ESX-Org/esx_phone)
-- [x] [esx_society](https://github.com/ESX-Org/esx_society)
-- [x] [skinchanger](https://github.com/ESX-Org/skinchanger)
-- [x] [esx_skin](https://github.com/ESX-Org/esx_skin)
-- [x] [esx_barbershop](https://github.com/ESX-Org/esx_barbershop)
-- [x] [esx_ambulancejob](https://github.com/ESX-Org/esx_ambulancejob)
-- [x] esx_billing
-- [x] esx_datastore
-- [x] esx_addoninventory
-- [x] esx_policejob
-- [x] esx_identity
-- [x] esx_holdup
-- [x] esx_rpchat
-- [x] esx_status
-- [x] esx_basicneeds
-- [x] esx_optionalneeds
-- [x] esx_license
-- [x] esx_dmvschool
-- [x] esx_jobs
-- [x] esx_joblisting
-- [x] esx_taxijob
-- [x] esx_mecanojob
-- [x] esx_celldoors
-- [x] esx_atm
-- [x] esx_vehicleshop
-- [x] esx_shops
-- [x] esx_clotheshop
-- [x] esx_lscustom
-- [x] esx_accessories
-- [x] instance
-- [x] esx_property
-- [x] esx_service
-- [x] esx_weashops
-- [x] esx_drugs
-- [x] esx_animations
-- [x] esx_voice
+| ------ | ------ | ------ |
+| [esx_addonaccount](https://github.com/ESX-Org/esx_addonaccount) | [esx_menu_default](https://github.com/ESX-Org/esx_menu_default) | [esx_menu_dialog](https://github.com/ESX-Org/esx_menu_dialog) |
+| [esx_menu_list](https://github.com/ESX-Org/esx_menu_list) | [esx_phone](https://github.com/ESX-Org/esx_phone) | [esx_society](https://github.com/ESX-Org/esx_society) |
+| [skinchanger](https://github.com/ESX-Org/skinchanger) | [esx_skin](https://github.com/ESX-Org/esx_skin) | [esx_barbershop](https://github.com/ESX-Org/esx_barbershop) |
+| [esx_ambulancejob](https://github.com/ESX-Org/esx_ambulancejob) | esx_policejob | esx_identity |
+| esx_billing | esx_datastore | esx_addoninventory |
+| esx_holdup | esx_rpchat | esx_jobs |
+| esx_status | esx_basicneeds | esx_optionalneeds |
+| esx_license | esx_dmvschool | esx_mecanojob |
+| esx_joblisting | esx_taxijob | esx_lscustom |
+| esx_celldoors | esx_atm | instance |
+| esx_shops | esx_vehicleshop | esx_clotheshop |
+| esx_accessories | esx_property | esx_property |
+| esx_service | esx_weashops | esx_drugs |
+| esx_animations | ------ | esx_voice |
+
+
