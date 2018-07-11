@@ -68,7 +68,7 @@ This repository is based on the [ESX-Org](https://github.com/ESX-Org) repositori
 - [x] esx_weashops
 - [x] esx_drugs
 - [x] esx_animations
-- [ ] esx_petrol
+- [x] [esx_petrol](https://git-iut.univ-lille1.fr/oliveras/ESX-Server)
 - [ ] pNotify
 - [ ] carhud
 - [x] streetLabel

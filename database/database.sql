@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `money` int(11) DEFAULT NULL,
   `bank` int(11) DEFAULT NULL,
   `permission_level` int(11) DEFAULT NULL,
-  `group` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL
+  `group` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 CREATE TABLE `addon_account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -25,13 +26,20 @@ CREATE TABLE `addon_account_data` (
   PRIMARY KEY (`id`)
 );
 ALTER TABLE `users`
-  ADD COLUMN `name` VARCHAR(255) NULL DEFAULT '' AFTER `money`,
-  ADD COLUMN `skin` LONGTEXT NULL AFTER `name`,
-  ADD COLUMN `job` varchar(255) NULL DEFAULT 'unemployed' AFTER `skin`,
-  ADD COLUMN `job_grade` INT NULL DEFAULT 0 AFTER `job`,
-  ADD COLUMN `loadout` LONGTEXT NULL AFTER `job_grade`,
-  ADD COLUMN `position` VARCHAR(255) NULL AFTER `loadout`
-;
+	ADD COLUMN `name` VARCHAR(255) NULL DEFAULT '' AFTER `money`,
+	ADD COLUMN `skin` LONGTEXT NULL AFTER `name`,
+	ADD COLUMN `job` varchar(255) NULL DEFAULT 'unemployed' AFTER `skin`,
+	ADD COLUMN `job_grade` INT NULL DEFAULT 0 AFTER `job`,
+	ADD COLUMN `loadout` LONGTEXT NULL AFTER `job_grade`,
+	ADD COLUMN `position` VARCHAR(255) NULL AFTER `loadout`,
+	ADD COLUMN `isDead` BIT(1) DEFAULT b'0',
+	ADD COLUMN `status` LONGTEXT NULL,
+	ADD COLUMN `firstname` VARCHAR(50) NULL DEFAULT '',
+	ADD COLUMN `lastname` VARCHAR(50) NULL DEFAULT '',
+	ADD COLUMN `dateofbirth` VARCHAR(25) NULL DEFAULT '',
+	ADD COLUMN `sex` VARCHAR(10) NULL DEFAULT '',
+	ADD COLUMN `height` VARCHAR(5) NULL DEFAULT '',
+	ADD COLUMN `last_property` VARCHAR(255) NULL;
 CREATE TABLE `items` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -148,6 +156,23 @@ CREATE TABLE `user_licenses` (
 
 	PRIMARY KEY (`id`)
 );
+
+
+
+CREATE TABLE `characters` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`identifier` VARCHAR(255) NOT NULL,
+	`firstname` VARCHAR(255) NOT NULL,
+	`lastname` VARCHAR(255) NOT NULL,
+	`dateofbirth` VARCHAR(255) NOT NULL,
+	`sex` VARCHAR(1) NOT NULL DEFAULT 'M',
+	`height` VARCHAR(128) NOT NULL,
+
+	PRIMARY KEY (`id`)
+);
+
+
+
 INSERT INTO `addon_account` (name, label, shared) VALUES
   ('society_ambulance', 'Ambulance', 1)
 ;
@@ -218,7 +243,6 @@ INSERT INTO `items` (name, label, `limit`) VALUES
   ('bandage','Bandage', 20),
   ('medikit','Medikit', 5)
 ;
-ALTER TABLE `users` ADD `isDead` BIT(1) DEFAULT b'0';
 
 INSERT INTO `licenses` (`type`, `label`) VALUES
 	('dmv', 'Code de la route'),
@@ -703,9 +727,7 @@ INSERT INTO `datastore` (name, label, shared) VALUES
   ('user_mask','Mask',0)
 ;
 
-ALTER TABLE `users`
-  ADD COLUMN `last_property` VARCHAR(255) NULL
-;
+
 
 INSERT INTO `addon_account` (name, label, shared) VALUES
   ('property_black_money','Argent Sale Propriété',0)
