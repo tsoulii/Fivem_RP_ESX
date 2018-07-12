@@ -816,4 +816,12 @@ CREATE TABLE `user_contacts` (
 	
 	PRIMARY KEY (`id`)
 );
-ALTER TABLE `owned_vehicles` ADD `state` BOOLEAN NOT NULL DEFAULT FALSE COMMENT 'Etat de la voiture' AFTER `owner`;
+CREATE TABLE `user_parkings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(60) DEFAULT NULL,
+  `garage` varchar(60) DEFAULT NULL,
+  `zone` int(11) NOT NULL,
+  `vehicle` longtext,
+
+  PRIMARY KEY (`id`)
+);
