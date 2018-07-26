@@ -1,6 +1,9 @@
 # Fivem_RP_ESX
 
 ### The repository allows you to create a ready Role Play server in a few seconds.
+
+### due to frequent updates of important scripts, the package will not be updated for some time, the last update on July 6, no errors in the server console
+
 # How to install
 1. Download artifacts server from [here](https://docs.fivem.net/server/)
 2. paste files from server-data (you do not have to download "cfx-server-data" they are included in the package)
